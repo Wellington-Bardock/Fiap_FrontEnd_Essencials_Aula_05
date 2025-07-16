@@ -1,0 +1,176 @@
+:root{ /*Usado para declarar as variaveis globais */
+    --color-light: #f4f4f4;
+    --color-dark: #333333;
+    --color-blue-dark: #000033;
+    --color-blue-200: #00ffff;
+    --gradient: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+
+    /* Scroll da Página */
+    scroll-behavior: smooth;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Quicksand;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 1.6rem;
+}
+
+ul, ol{
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-light);
+    font-weight: 600;
+}
+
+a:hover{
+    color: var(--color-blue-200);
+}
+
+.container{
+    width: 100%;
+    min-height: 100dvh;
+    color: var(--color-light);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%; /*50% e center são a mesma coisa */
+    background-attachment: fixed;
+}
+
+.bg-banner-1{
+    background-image: var(--gradient), url(../assets/images/banner1.jpg);
+}
+
+.bg-banner-2{
+    background-image: url(../assets/images/banner2.jpg);
+}
+
+.bg-blue-dark{
+    background-color: var(--color-blue-dark);
+}
+
+.hero{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    min-height: calc(100dvh - 100px);
+}
+
+.hero h1{
+    font-size: clamp(3rem, 6vw, 10rem); /*Definir um range de tamanho onde esse é a sintaxe (min, ideal, max) */
+}
+
+.hero h2{
+    font-size: clamp(4rem, 6vw, 5rem);
+    text-wrap: balance;
+    text-align: center;
+}
+
+.hero p{
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+    margin-bottom: 2rem;
+}
+
+.hero span{
+    color: var(--color-blue-200)
+}
+
+.header-page{
+    width: 90%;
+    height: 100px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    color: var(--color-blue-200);
+    z-index: 2;
+}
+
+.nav-menu{
+    display: flex;
+    column-gap: 3rem;
+}
+
+.sanduiche{
+    display: none;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.barra{
+    display: block;
+    width: 3rem;
+    height: 0.3rem;
+    background-color: var(--color-blue-200);
+    margin: 0.5rem auto;
+    border-radius: 0.7rem;
+    transition: 0.5s;
+}
+
+.btn{
+    border: 1px solid var(--color-light);
+    padding: 0.8rem 3rem;
+    border-radius: 0.7rem;
+    font-size: 2.5rem;
+}
+
+.btn:hover{
+    background-color: var(--color-blue-dark);
+    border-color: var(--color-blue-200);
+    transition: 0.5s;
+}
+
+/* Pensando no responsivo do hero */
+@media(width <= 1024px){
+    .sanduiche{
+        display: block;
+    }
+    
+    .nav-menu{
+        background-color: var(--color-blue-dark);
+        width: 100%;
+        min-height: 100dvh;
+        position: fixed;
+        left: 0;
+        top: -1200px;
+        z-index: 1;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 3rem;
+        transition: 0.5s;
+    }
+
+    .active{
+        top: 0;
+    }
+
+    .sanduiche.active .barra:first-child{
+        transform: translateY(8px) rotate(405deg);
+    }
+
+    .sanduiche.active .barra:nth-child(2){
+        opacity: 0;
+    }
+
+    .sanduiche.active .barra:last-child{
+        transform: translateY(-8px) rotate(-405deg);
+    }
+}
