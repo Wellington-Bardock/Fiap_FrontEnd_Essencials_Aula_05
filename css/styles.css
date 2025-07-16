@@ -139,6 +139,11 @@ a:hover{
 
 /* Pensando no responsivo do hero */
 @media(width <= 1024px){
+
+    .container{
+        background-attachment: scroll;
+    }
+
     .sanduiche{
         display: block;
     }
